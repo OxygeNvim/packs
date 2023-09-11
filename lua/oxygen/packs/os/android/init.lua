@@ -7,6 +7,7 @@ return {
         'csharp_ls',
         'lua_ls',
         'rust_analyzer',
+        'zls',
       }
 
       for _, package in pairs(packages) do
