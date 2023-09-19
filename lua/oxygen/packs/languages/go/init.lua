@@ -7,12 +7,33 @@ return {
   },
 
   {
-    'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        gopls = {},
-      },
+    'ray-x/go.nvim',
+    ft = { 'go', 'gomod' },
+    dependencies = {
+      'ray-x/guihua.lua',
     },
+    opts = function()
+      return {
+        lsp_cfg = table.merge({}, require('oxygen.plugins.lsp.defaults')),
+        inlay_hints = {
+          parameter_hints_prefix = '<- ',
+          other_hints_prefix = '-> ',
+        },
+        luasnip = true,
+      }
+    end,
+    config = function(_, opts)
+      require('go').setup(opts)
+
+      local format_sync_group = vim.api.nvim_create_augroup('GoImport', {})
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = '*.go',
+        callback = function()
+          require('go.format').goimport()
+        end,
+        group = format_sync_group,
+      })
+    end,
   },
 
   {
