@@ -31,19 +31,28 @@ return {
   {
     'simrat39/rust-tools.nvim',
     ft = { 'rust' },
-    opts = {
-      server = table.merge({}, require('oxygen.plugins.lsp.defaults')),
-      tools = {
-        inlay_hints = {
-          parameter_hints_prefix = '<- ',
-          other_hints_prefix = '-> ',
-          right_align_padding = 5,
+    opts = function()
+      local defaults = require('oxygen.plugins.lsp.defaults')
+
+      return {
+        server = table.merge(defaults, {
+          on_attach = function(client, bufnr)
+            defaults.on_attach(client, bufnr)
+
+            require('rust-tools').inlay_hints.enable()
+          end,
+        }),
+        tools = {
+          inlay_hints = {
+            parameter_hints_prefix = '<- ',
+            other_hints_prefix = '-> ',
+          },
+          hover_actions = {
+            border = config.ui.border,
+          },
         },
-        hover_actions = {
-          border = config.ui.border,
-        },
-      },
-    },
+      }
+    end,
     config = function(_, opts)
       local rust_tools = require('rust-tools')
 
