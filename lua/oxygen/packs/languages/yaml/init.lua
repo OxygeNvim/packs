@@ -17,11 +17,17 @@ return {
       servers = {
         yamlls = {
           on_new_config = function(new_config)
-            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            new_config.settings.yaml.schemas = new_config.settings.yaml.schemas or {}
             table.extend(new_config.settings.yaml.schemas, require('schemastore').yaml.schemas())
           end,
           settings = {
+            redhat = { telemetry = { enabled = false } },
             yaml = {
+              validate = true,
+              keyOrdering = false,
+              format = {
+                enable = true,
+              },
               schemaStore = {
                 enable = false,
                 url = '',
