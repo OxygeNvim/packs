@@ -7,6 +7,10 @@
 - Automatic LSP installation
 - Automatic LSP setup
 
+### Extra plugins
+
+- `clangd_extensions.nvim`
+
 ### Imports
 
 - `CMake` language pack
@@ -17,3 +21,4 @@
 ### Links
 
 - [`clangd`](https://clangd.llvm.org)
+- [`clangd_extensions.nvim`](https://github.com/p00f/clangd_extensions.nvim)

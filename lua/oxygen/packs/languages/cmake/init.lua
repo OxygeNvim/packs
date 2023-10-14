@@ -8,7 +8,7 @@ return {
 
   {
     'Civitasv/cmake-tools.nvim',
-    ft = { 'cmake' },
+    ft = { 'cmake', 'c', 'cpp' },
     opts = {},
     config = function(_, opts)
       local cmake_tools = require('cmake-tools')
