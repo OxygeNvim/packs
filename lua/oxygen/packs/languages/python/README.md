@@ -3,7 +3,7 @@
 ### Includes
 
 - Syntax highlighting
-- `jedi_language_server` as LSP
+- `ruff_lsp` as LSP
 - Automatic LSP installation
 - Automatic LSP setup
 
@@ -14,4 +14,4 @@
 ### Links
 
 - [`Python`](https://www.python.org)
-- [`jedi_language_server`](https://github.com/pappasam/jedi-language-server)
+- [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp)
