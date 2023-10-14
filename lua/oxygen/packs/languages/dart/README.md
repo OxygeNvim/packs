@@ -4,7 +4,6 @@
 
 - Syntax highlighting
 - `dartls` as LSP
-- Automatic LSP installation
 - Automatic LSP setup
 
 ### Imports
