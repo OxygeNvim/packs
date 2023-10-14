@@ -15,10 +15,36 @@ return {
     'jose-elias-alvarez/typescript.nvim',
     ft = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
     opts = function()
+      local defaults = require('oxygen.plugins.lsp.defaults')
+
       return {
-        server = table.merge(require('oxygen.plugins.lsp.defaults'), {
+        server = table.merge(defaults, {
+          settings = {
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+          },
           on_attach = function(client, bufnr)
-            require('oxygen.plugins.lsp.defaults').on_attach(client, bufnr)
+            defaults.on_attach(client, bufnr)
 
             -- TODO: add DAP
           end,
