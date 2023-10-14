@@ -9,15 +9,31 @@ return {
   {
     'mfussenegger/nvim-jdtls',
     ft = { 'java' },
-    opts = table.merge({
-      cmd = { 'jdtls' },
-      root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
-      on_attach = function(client, bufnr)
-        require('oxygen.plugins.lsp.defaults').on_attach(client, bufnr)
+    opts = function()
+      local defaults = require('oxygen.plugins.lsp.defaults')
 
-        require('jdtls.setup').add_commands()
-      end,
-    }, require('oxygen.plugins.lsp.defaults')),
+      return table.merge(defaults, {
+        cmd = { 'jdtls' },
+        root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw', 'pom.xml' }, { upward = true })[1]),
+        on_attach = function(client, bufnr)
+          defaults.on_attach(client, bufnr)
+
+          require('jdtls.setup').add_commands()
+        end,
+        settings = {
+          java = {
+            inlayHints = {
+              parameterNames = { enabled = 'all' },
+            },
+          },
+        },
+        init_options = {
+          extendedClientCapabilities = table.merge(require('jdtls').extendedClientCapabilities, {
+            onCompletionItemSelectedCommand = 'editor.action.triggerParameterHints',
+          }),
+        },
+      })
+    end,
     config = function(_, opts)
       local jdtls = require('jdtls')
 

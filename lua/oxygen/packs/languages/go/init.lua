@@ -14,7 +14,7 @@ return {
     },
     opts = function()
       return {
-        lsp_cfg = table.merge({}, require('oxygen.plugins.lsp.defaults')),
+        lsp_cfg = require('oxygen.plugins.lsp.defaults'),
         inlay_hints = {
           parameter_hints_prefix = '<- ',
           other_hints_prefix = '-> ',
