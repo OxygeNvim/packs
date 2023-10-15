@@ -15,10 +15,6 @@ return {
     opts = function()
       return {
         lsp_cfg = require('oxygen.plugins.lsp.defaults'),
-        inlay_hints = {
-          parameter_hints_prefix = '<- ',
-          other_hints_prefix = '-> ',
-        },
         luasnip = true,
       }
     end,

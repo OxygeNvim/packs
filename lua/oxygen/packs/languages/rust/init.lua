@@ -9,6 +9,13 @@ return {
   },
 
   {
+    'hrsh7th/nvim-cmp',
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = 'crates', keyword_length = 2, priority = 1750 })
+    end,
+  },
+
+  {
     'saecki/crates.nvim',
     event = 'BufRead Cargo.toml',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -16,6 +23,9 @@ return {
       null_ls = {
         enabled = true,
         name = 'crates.nvim',
+      },
+      cmp = {
+        enabled = true,
       },
     },
     config = function(_, opts)
@@ -36,16 +46,32 @@ return {
 
       return {
         server = table.merge(defaults, {
-          on_attach = function(client, bufnr)
-            defaults.on_attach(client, bufnr)
-
-            require('rust-tools').inlay_hints.enable()
-          end,
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true,
+                runBuildScripts = true,
+              },
+              checkOnSave = {
+                allFeatures = true,
+                command = 'clippy',
+                extraArgs = { '--no-deps' },
+              },
+              procMacro = {
+                enable = true,
+                ignored = {
+                  ['async-trait'] = { 'async_trait' },
+                  ['napi-derive'] = { 'napi' },
+                  ['async-recursion'] = { 'async_recursion' },
+                },
+              },
+            },
+          },
         }),
         tools = {
           inlay_hints = {
-            parameter_hints_prefix = '<- ',
-            other_hints_prefix = '-> ',
+            auto = false,
           },
           hover_actions = {
             border = config.ui.border,

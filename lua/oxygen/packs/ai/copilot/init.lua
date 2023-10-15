@@ -37,7 +37,7 @@ return {
       },
     },
     opts = function(_, opts)
-      table.insert(opts.sources, { name = 'copilot', keyword_length = 2, priority = 1000 })
+      table.insert(opts.sources, { name = 'copilot', keyword_length = 2, priority = 1750 })
     end,
   },
 }
