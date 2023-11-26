@@ -20,7 +20,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'ruff-lsp')
+      table.insert(opts.ensure_installed, 'ruff_lsp')
     end,
   },
 }
