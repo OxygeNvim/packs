@@ -16,4 +16,3 @@
 ### Links
 
 - [`Vue`](https://vuejs.org)
-- [`vuels`](https://github.com/vuejs/vetur/tree/master/server)

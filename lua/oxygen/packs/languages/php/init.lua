@@ -1,10 +1,4 @@
 return {
-  { import = 'oxygen.packs.languages.javascript' },
-  { import = 'oxygen.packs.languages.css' },
-  { import = 'oxygen.packs.languages.html' },
-
-  { import = 'oxygen.packs.formatters.php-cs-fixer' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)

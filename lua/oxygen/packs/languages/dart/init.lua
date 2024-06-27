@@ -1,6 +1,4 @@
 return {
-  { import = 'oxygen.packs.languages.yaml' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)

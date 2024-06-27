@@ -2,12 +2,11 @@
 
 ### Requirements
 
-- `metals` needs to be installed on `$PATH`
+- `metals` needs to be installed on your system
 
 ### Includes
 
 - Syntax highlighting
-- `metals` as LSP
 - Automatic LSP setup
 
 ## Extra plugins
@@ -17,5 +16,4 @@
 ### Links
 
 - [`Scala`](https://www.scala-lang.org)
-- [`metals`](https://github.com/scalameta/metals)
 - [`nvim-metals`](https://github.com/scalameta/nvim-metals)

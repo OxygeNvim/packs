@@ -3,7 +3,3 @@
 ### Includes
 
 - Syntax highlighting
-
-### Imports
-
-- `Prettier` formatter pack

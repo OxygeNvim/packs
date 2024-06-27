@@ -1,9 +1,4 @@
 return {
-  { import = 'oxygen.packs.languages.cmake' },
-  { import = 'oxygen.packs.languages.make' },
-
-  { import = 'oxygen.packs.formatters.clang-format' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
@@ -15,16 +10,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        clangd = {
-          on_attach = function()
-            local ok_inlay_hints, inlay_hints = r('clangd_extensions.inlay_hints')
-
-            if ok_inlay_hints then
-              inlay_hints.setup_autocmd()
-              inlay_hints.set_inlay_hints()
-            end
-          end,
-        },
+        clangd = {},
       },
     },
   },
@@ -34,11 +20,6 @@ return {
     ft = { 'c', 'cpp' },
     opts = function()
       return {
-        inlay_hints = {
-          inline = true,
-          parameter_hints_prefix = '<- ',
-          other_hints_prefix = '-> ',
-        },
         ast = {
           role_icons = {
             type = '',
@@ -58,7 +39,7 @@ return {
         },
       }
     end,
-    setup = function(_, opts)
+    config = function(_, opts)
       require('clangd_extensions').setup(opts)
     end,
   },

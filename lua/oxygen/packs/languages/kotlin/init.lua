@@ -1,6 +1,4 @@
 return {
-  { import = 'oxygen.packs.linters.ktlint' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)

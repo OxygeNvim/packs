@@ -1,6 +1,6 @@
 # `android` os pack
 
-Android OS specific configuration for OxygeNvim
+Android *OS* specific configuration for OxygeNvim
 
 ### Disables
 

@@ -1,6 +1,4 @@
 return {
-  { import = 'oxygen.packs.formatters.prettier' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)

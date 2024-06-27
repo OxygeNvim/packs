@@ -3,7 +3,6 @@
 ### Includes
 
 - Syntax highlighting
-- `jsonls` as LSP
 - Automatic LSP installation
 - Automatic LSP setup
 
@@ -11,11 +10,6 @@
 
 - `SchemaStore.nvim`
 
-### Imports
-
-- `Prettier` formatter pack
-
 ### Links
 
-- [`jsonls`](https://github.com/hrsh7th/vscode-langservers-extracted)
 - [`SchemaStore.nvim`](https://github.com/b0o/SchemaStore.nvim)

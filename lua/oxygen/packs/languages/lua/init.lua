@@ -4,8 +4,6 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 return {
-  { import = 'oxygen.packs.formatters.stylua' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
