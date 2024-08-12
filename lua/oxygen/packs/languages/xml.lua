@@ -1,10 +1,8 @@
--- TODO: add dap
-
 return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'zig')
+      table.insert(opts.ensure_installed, 'xml')
     end,
   },
 
@@ -12,7 +10,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        zls = {},
+        lemminx = {},
       },
     },
   },
@@ -20,7 +18,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'zls')
+      table.insert(opts.ensure_installed, 'lemminx')
     end,
   },
 }

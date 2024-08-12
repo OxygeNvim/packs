@@ -2,15 +2,19 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'go', 'gomod', 'gosum' })
+      table.insert(opts.ensure_installed, 'go')
+      table.insert(opts.ensure_installed, 'gomod')
+      table.insert(opts.ensure_installed, 'gosum')
+      table.insert(opts.ensure_installed, 'gowork')
     end,
   },
 
   {
     'ray-x/go.nvim',
+    main = 'go',
     ft = { 'go', 'gomod' },
     dependencies = {
-      'ray-x/guihua.lua',
+      { 'ray-x/guihua.lua' },
     },
     opts = function()
       return {
@@ -21,14 +25,30 @@ return {
     config = function(_, opts)
       require('go').setup(opts)
 
-      local format_sync_group = vim.api.nvim_create_augroup('GoImport', {})
       vim.api.nvim_create_autocmd('BufWritePre', {
+        group = require('oxygen.core.utils').create_augroup('GoImport'),
         pattern = '*.go',
         callback = function()
           require('go.format').goimport()
         end,
-        group = format_sync_group,
       })
+    end,
+  },
+
+  {
+    'leoluz/nvim-dap-go',
+    main = 'dap-go',
+    ft = { 'go' },
+    dependencies = {
+      { 'nvim-dap' },
+    },
+    opts = {},
+  },
+
+  {
+    'jay-babu/mason-nvim-dap.nvim',
+    opts = function(_, opts)
+      table.insert(opts.ensure_installed, 'delve')
     end,
   },
 

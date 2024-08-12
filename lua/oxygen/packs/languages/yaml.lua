@@ -1,10 +1,8 @@
 return {
-  { import = 'oxygen.packs.formatters.prettier' },
-
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'yaml' })
+      table.insert(opts.ensure_installed, 'yaml')
     end,
   },
 

@@ -3,7 +3,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        eslint = {},
+        biome = {},
       },
     },
   },
@@ -11,7 +11,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'eslint')
+      table.insert(opts.ensure_installed, 'biome')
     end,
   },
 }

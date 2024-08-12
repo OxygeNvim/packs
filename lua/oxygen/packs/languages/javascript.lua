@@ -1,19 +1,34 @@
+-- TODO: add dap
+
 return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'javascript', 'typescript', 'jsdoc', 'tsx' })
+      table.insert(opts.ensure_installed, 'javascript')
+      table.insert(opts.ensure_installed, 'typescript')
+      table.insert(opts.ensure_installed, 'jsdoc')
+      table.insert(opts.ensure_installed, 'tsx')
+    end,
+  },
+
+  {
+    'axelvc/template-string.nvim',
+    event = { 'InsertEnter' },
+    opts = {
+      remove_template_string = true,
+    },
+    config = function(_, opts)
+      require('template-string').setup(opts)
     end,
   },
 
   {
     'jose-elias-alvarez/typescript.nvim',
+    main = 'typescript',
     ft = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
     opts = function()
-      local defaults = require('oxygen.plugins.lsp.defaults')
-
       return {
-        server = table.merge(defaults, {
+        server = table.merge(require('oxygen.plugins.lsp.defaults'), {
           settings = {
             javascript = {
               inlayHints = {
@@ -38,18 +53,8 @@ return {
               },
             },
           },
-          on_attach = function(client, bufnr)
-            defaults.on_attach(client, bufnr)
-
-            -- TODO: add DAP
-          end,
         }),
       }
-    end,
-    config = function(_, opts)
-      local typescript = require('typescript')
-
-      typescript.setup(opts)
     end,
   },
 

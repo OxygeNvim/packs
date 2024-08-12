@@ -1,10 +1,8 @@
 return {
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     opts = function(_, opts)
-      local null_ls = require('null-ls')
-
-      table.insert(opts.sources, null_ls.builtins.formatting.black)
+      table.insert(opts.sources, require('null-ls').builtins.formatting.black)
     end,
   },
 

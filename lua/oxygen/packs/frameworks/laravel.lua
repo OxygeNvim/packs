@@ -1,38 +1,53 @@
 vim.filetype.add({
   pattern = {
-    ['.*%.blade%.php'] = 'blade',
+    ['*.blade.php'] = 'blade',
   },
 })
 
 return {
   {
-    'https://github.com/onecentlin/laravel-blade-snippets-vscode',
-    ft = { 'blade' },
-  },
+    'neovim/nvim-lspconfig',
+    opts = function()
+      local configs = require('lspconfig.configs')
 
-  {
-    'https://github.com/adalessa/laravel.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'tpope/vim-dotenv',
-      'MunifTanjim/nui.nvim',
-      'nvimtools/none-ls.nvim',
-    },
-    cmd = { 'Sail', 'Artisan', 'Composer', 'Npm', 'Yarn', 'Laravel' },
-    ft = { 'blade', 'php' },
-    keys = {
-      { '<leader>la', ':Laravel artisan<cr>' },
-      { '<leader>lr', ':Laravel routes<cr>' },
-      { '<leader>lm', ':Laravel related<cr>' },
-    },
-    config = function()
-      local laravel = require('laravel')
+      configs.blade = {
+        default_config = {
+          cmd = { 'laravel-dev-generators', 'lsp' },
+          filetypes = { 'blade' },
+          settings = {},
+          root_dir = function(fname)
+            return require('lspconfig').util.find_git_ancestor(fname)
+          end,
+        },
+      }
 
-      laravel.setup()
-
-      require('telescope').load_extension('laravel')
+      if vim.fn.executable('laravel-dev-generators') == 1 then
+        return {
+          servers = {
+            blade = {},
+          },
+        }
+      else
+        return {}
+      end
     end,
   },
 
-  -- TODO: add treesitter parser when `https://github.com/EmranMR/tree-sitter-blade` is available
+  -- BUG: not working or I'm dumb
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = function(_, opts)
+      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.blade = {
+        install_info = {
+          url = 'https://github.com/EmranMR/tree-sitter-blade',
+          files = { 'src/parser.c' },
+          branch = 'main',
+        },
+        filetype = 'blade',
+      }
+
+      table.insert(opts.ensure_installed, 'blade')
+    end,
+  },
 }

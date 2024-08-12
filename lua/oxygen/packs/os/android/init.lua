@@ -11,8 +11,10 @@ return {
       }
 
       for _, package in pairs(packages) do
-        table.remove_by_value(opts.ensure_installed, package)
+        opts = table.remove_by_value(opts.ensure_installed, package)
       end
+
+      return opts
     end,
   },
 
@@ -22,8 +24,10 @@ return {
       local packages = { 'stylua', 'clang-format' }
 
       for _, package in pairs(packages) do
-        table.remove_by_value(opts.ensure_installed, package)
+        opts = table.remove_by_value(opts.ensure_installed, package)
       end
+
+      return opts
     end,
   },
 }

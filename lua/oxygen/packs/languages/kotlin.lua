@@ -1,8 +1,10 @@
+-- TODO: add dap
+
 return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'kotlin' })
+      table.insert(opts.ensure_installed, 'kotlin')
     end,
   },
 

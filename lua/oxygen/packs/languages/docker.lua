@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'dockerfile' })
+      table.insert(opts.ensure_installed, 'dockerfile')
     end,
   },
 
@@ -11,7 +11,7 @@ return {
     opts = {
       servers = {
         dockerls = {},
-        docker_compose_language_service = {}
+        docker_compose_language_service = {},
       },
     },
   },

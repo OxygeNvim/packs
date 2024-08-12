@@ -2,7 +2,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'bash' })
+      table.insert(opts.ensure_installed, 'bash')
     end,
   },
 

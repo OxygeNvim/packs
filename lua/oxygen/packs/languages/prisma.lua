@@ -1,13 +1,13 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'prisma', })
+      table.insert(opts.ensure_installed, 'prisma')
     end,
   },
 
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     opts = {
       servers = {
         prismals = {},
@@ -20,5 +20,5 @@ return {
     opts = function(_, opts)
       table.insert(opts.ensure_installed, 'prismals')
     end,
-  }
+  },
 }

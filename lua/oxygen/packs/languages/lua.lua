@@ -7,8 +7,37 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'lua', 'luap', 'luau', 'luadoc' })
+      table.insert(opts.ensure_installed, 'lua')
+      table.insert(opts.ensure_installed, 'luap')
+      table.insert(opts.ensure_installed, 'luau')
+      table.insert(opts.ensure_installed, 'luadoc')
     end,
+  },
+
+  {
+    'folke/lazydev.nvim',
+    main = 'lazydev',
+    ft = { 'lua' },
+    cmd = { 'LazyDev' },
+    dependencies = {
+      { 'Bilal2453/luvit-meta' },
+    },
+    opts = {
+      library = {
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+    specs = {
+      {
+        'hrsh7th/nvim-cmp',
+        opts = function(_, opts)
+          table.insert(opts.sources, {
+            name = 'lazydev',
+            group_index = 0,
+          })
+        end,
+      },
+    },
   },
 
   {
@@ -28,9 +57,9 @@ return {
               },
               workspace = {
                 library = {
-                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                  [vim.fn.stdpath('config') .. '/lua'] = true,
+                  vim.fn.expand('$VIMRUNTIME/lua'),
+                  vim.fn.expand('$VIMRUNTIME/lua/vim/lsp'),
+                  vim.fn.stdpath('config') .. '/lua',
                 },
                 maxPreload = 10000,
               },

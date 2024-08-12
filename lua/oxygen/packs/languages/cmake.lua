@@ -2,19 +2,15 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, { 'cmake' })
+      table.insert(opts.ensure_installed, 'cmake')
     end,
   },
 
   {
     'Civitasv/cmake-tools.nvim',
-    ft = { 'cmake', 'c', 'cpp' },
+    main = 'cmake-tools',
+    ft = { 'cmake' },
     opts = {},
-    config = function(_, opts)
-      local cmake_tools = require('cmake-tools')
-
-      cmake_tools.setup(opts)
-    end,
   },
 
   {

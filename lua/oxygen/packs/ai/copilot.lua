@@ -1,30 +1,28 @@
 return {
   {
-    'zbirenbaum/copilot.lua',
-    cmd = { 'Copilot' },
-    build = ':Copilot auth',
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    },
-    config = function(_, opts)
-      require('copilot').setup(opts)
-    end,
-  },
-
-  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       {
         'zbirenbaum/copilot-cmp',
-        dependencies = { 'copilot.lua' },
+        main = 'copilot_cmp',
+        dependencies = {
+          {
+            'zbirenbaum/copilot.lua',
+            main = 'copilot',
+            cmd = { 'Copilot' },
+            opts = {
+              suggestion = { enabled = false },
+              panel = { enabled = false },
+            },
+          },
+        },
         opts = {},
         config = function(_, opts)
           local copilot_cmp = require('copilot_cmp')
-
           copilot_cmp.setup(opts)
 
           vim.api.nvim_create_autocmd('LspAttach', {
+            group = require('oxygen.core.utils').create_augroup('_copilot_OnLspAttach'),
             callback = function(args)
               local client = vim.lsp.get_client_by_id(args.data.client_id)
 
