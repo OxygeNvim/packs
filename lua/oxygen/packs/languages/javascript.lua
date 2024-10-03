@@ -23,12 +23,10 @@ return {
   },
 
   {
-    'jose-elias-alvarez/typescript.nvim',
-    main = 'typescript',
-    ft = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
-    opts = function()
-      return {
-        server = table.merge(require('oxygen.plugins.lsp.defaults'), {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        ts_ls = {
           settings = {
             javascript = {
               inlayHints = {
@@ -53,15 +51,15 @@ return {
               },
             },
           },
-        }),
-      }
-    end,
+        },
+      },
+    },
   },
 
   {
     'williamboman/mason-lspconfig.nvim',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'tsserver')
+      table.insert(opts.ensure_installed, 'ts_ls')
     end,
   },
 }
