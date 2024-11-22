@@ -1,6 +1,6 @@
 vim.filetype.add({
   pattern = {
-    ['*.blade.php'] = 'blade',
+    ['.*.blade.php'] = 'blade',
   },
 })
 
