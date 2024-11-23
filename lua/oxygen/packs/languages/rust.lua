@@ -11,10 +11,18 @@ return {
   {
     'saecki/crates.nvim',
     main = "crates",
-    event = { 'BufRead Cargo.toml', 'VeryLazy' },
+    event = { 'BufRead Cargo.toml' },
     opts = {
+      completion = {
+        crates = {
+          enabled = true,
+        },
+      },
       lsp = {
         enabled = true,
+        actions = true,
+        completion = true,
+        hover = true,
         on_attach = function(client, bufnr)
           require('oxygen.plugins.lsp.defaults').on_attach(client, bufnr)
         end,

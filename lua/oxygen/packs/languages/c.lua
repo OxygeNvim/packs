@@ -24,7 +24,6 @@ return {
       if not dap.adapters['codelldb'] then
         dap.adapters['codelldb'] = {
           type = 'server',
-          host = 'localhost',
           port = '${port}',
           executable = {
             command = 'codelldb',
@@ -41,7 +40,7 @@ return {
           {
             type = 'codelldb',
             request = 'launch',
-            name = 'Debug executable',
+            name = 'Debug',
             cwd = '${workspaceFolder}',
             program = function()
               return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
@@ -65,6 +64,9 @@ return {
     ft = { 'c', 'cpp' },
     opts = function()
       return {
+        inlay_hints = {
+          inline = false,
+        },
         ast = {
           role_icons = {
             type = '',

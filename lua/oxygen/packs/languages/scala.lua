@@ -40,6 +40,9 @@ return {
   {
     'scalameta/nvim-metals',
     ft = { 'scala', 'sbt' },
+    dependencies = {
+      { "plenary.nvim" },
+    },
     opts = function()
       return table.merge(require('metals').bare_config(), require('oxygen.plugins.lsp.defaults'))
     end,

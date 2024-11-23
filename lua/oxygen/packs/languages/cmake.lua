@@ -9,8 +9,13 @@ return {
   {
     'Civitasv/cmake-tools.nvim',
     main = 'cmake-tools',
-    ft = { 'cmake' },
-    opts = {},
+    ft = { 'cmake', "c", "cpp" },
+    opts = {
+      cmake_executor = {
+        name = "overseer",
+        opts = {}
+      }
+    },
   },
 
   {

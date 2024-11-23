@@ -6,6 +6,7 @@ return {
       table.insert(opts.ensure_installed, 'gitcommit')
       table.insert(opts.ensure_installed, 'gitattributes')
       table.insert(opts.ensure_installed, 'git_rebase')
+      table.insert(opts.ensure_installed, 'git_config')
     end,
   },
 }
