@@ -8,10 +8,22 @@ return {
 
   {
     'neovim/nvim-lspconfig',
-    opts = {
-      servers = {
-        sourcekit = {},
-      },
-    },
+    opts = function()
+      local util = require('lspconfig.util')
+
+      return {
+        servers = {
+          sourcekit = {
+            filetypes = { 'swift', 'objc', 'objcpp' },
+            root_dir = function(filename, _)
+              return util.root_pattern('buildServer.json')(filename)
+                  or util.root_pattern('*.xcodeproj', '*.xcworkspace')(filename)
+                  or util.root_pattern('Package.swift')(filename)
+                  or vim.fs.dirname(vim.fs.find('.git', { path = filename, upward = true })[1])
+            end,
+          },
+        },
+      }
+    end,
   },
 }
