@@ -1,21 +1,21 @@
 return {
   {
+    'zbirenbaum/copilot.lua',
+    main = 'copilot',
+    cmd = { 'Copilot' },
+    event = { 'InsertEnter' },
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
+  },
+
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       {
         'zbirenbaum/copilot-cmp',
         main = 'copilot_cmp',
-        dependencies = {
-          {
-            'zbirenbaum/copilot.lua',
-            main = 'copilot',
-            cmd = { 'Copilot' },
-            opts = {
-              suggestion = { enabled = false },
-              panel = { enabled = false },
-            },
-          },
-        },
         opts = {},
         config = function(_, opts)
           local copilot_cmp = require('copilot_cmp')
