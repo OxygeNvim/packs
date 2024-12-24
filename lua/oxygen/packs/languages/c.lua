@@ -14,7 +14,6 @@ return {
         clangd = {
           cmd = {
             'clangd',
-            '--background-index',
             '--clang-tidy',
           },
         },
