@@ -1,6 +1,6 @@
 <div align="center">
     <h1>packs</h1>
-    <h2>Extra plugin, linter, formatter, language and framework packs for OxygeNvim</h1>
+    <h2>Extra plugin, linter, formatter, language and framework packs for OxygeNvim</h2>
 </div>
 
 <div align="center">
