@@ -1,5 +1,7 @@
 -- TODO: add dap
 
+local lspconfig_util = require('lspconfig.util')
+
 return {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -27,6 +29,8 @@ return {
     opts = {
       servers = {
         ts_ls = {
+          root_dir = lspconfig_util.root_pattern('package.json'),
+          single_file_support = false,
           settings = {
             javascript = {
               inlayHints = {
