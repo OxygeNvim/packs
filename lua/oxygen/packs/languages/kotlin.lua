@@ -12,7 +12,7 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       servers = {
-        kotlin_language_server = {},
+        kotlin_lsp = {},
       },
     },
   },
@@ -20,7 +20,7 @@ return {
   {
     'williamboman/mason-lspconfig.nvim',
     opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'kotlin_language_server')
+      table.insert(opts.ensure_installed, 'kotlin_lsp')
     end,
   },
 }
