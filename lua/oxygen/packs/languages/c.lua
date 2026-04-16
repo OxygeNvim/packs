@@ -1,9 +1,12 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'c', 'cpp' })
-    end,
+    opts = {
+      parsers = {
+        c = {},
+        cpp = {},
+      },
+    },
   },
 
   {

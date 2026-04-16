@@ -1,15 +1,18 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'markdown', 'markdown_inline' })
-    end,
+    opts = {
+      parsers = {
+        markdown = {},
+        markdown_inline = {},
+      },
+    },
   },
 
   {
     'OXY2DEV/markview.nvim',
     main = 'markview',
-    ft = 'markdown',
+    ft = { 'markdown' },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',

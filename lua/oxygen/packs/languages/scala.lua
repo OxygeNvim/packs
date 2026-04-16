@@ -1,9 +1,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'scala' })
-    end,
+    opts = {
+      parsers = {
+        scala = {},
+      },
+    },
   },
 
   {

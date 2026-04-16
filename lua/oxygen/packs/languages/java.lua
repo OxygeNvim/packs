@@ -3,9 +3,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'java' })
-    end,
+    opts = {
+      parsers = {
+        java = {},
+      },
+    },
   },
 
   {
@@ -13,7 +15,7 @@ return {
     main = 'jdtls',
     ft = { 'java' },
     opts = function()
-      return table.merge(require('oxygen.plugins.lsp.defaults'), {
+      return table.merge(require('oxygen.core.lsp.defaults'), {
         cmd = { 'jdtls' },
         root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw', 'pom.xml' }, { upward = true })[1]),
         settings = {

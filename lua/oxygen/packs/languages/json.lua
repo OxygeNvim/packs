@@ -4,7 +4,6 @@ return {
     opts = {
       parsers = {
         json = {},
-        jsonc = {},
         json5 = {},
       },
     },

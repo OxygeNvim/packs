@@ -3,9 +3,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'kotlin' })
-    end,
+    opts = {
+      parsers = {
+        kotlin = {},
+      },
+    },
   },
 
   {

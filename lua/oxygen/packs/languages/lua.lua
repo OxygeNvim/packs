@@ -6,16 +6,20 @@ table.insert(runtime_path, 'lua/?/init.lua')
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'lua', 'luap', 'luau', 'luadoc' })
-    end,
+    opts = {
+      parsers = {
+        lua = {},
+        luap = {},
+        luau = {},
+        luadoc = {},
+      },
+    },
   },
 
   {
     'folke/lazydev.nvim',
     main = 'lazydev',
     ft = { 'lua' },
-    cmd = { 'LazyDev' },
     dependencies = {
       { 'Bilal2453/luvit-meta' },
     },

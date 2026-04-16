@@ -27,13 +27,13 @@ return {
                 type = 'dart',
                 request = 'launch',
                 program = function()
-                  return vim.fn.input('Path to file: ', vim.fn.getcwd() .. "/", 'file')
+                  return vim.fn.input('Path to file: ', vim.fn.getcwd() .. '/', 'file')
                 end,
               },
             }
           end,
         },
-        lsp = require('oxygen.plugins.lsp.defaults'),
+        lsp = require('oxygen.core.lsp.defaults'),
       }
     end,
     specs = {

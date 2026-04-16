@@ -1,9 +1,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('nvim-treesitter').install({ 'css' })
-    end,
+    opts = {
+      parsers = {
+        css = {},
+      },
+    },
   },
 
   {
