@@ -6,11 +6,8 @@ table.insert(runtime_path, 'lua/?/init.lua')
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'lua')
-      table.insert(opts.ensure_installed, 'luap')
-      table.insert(opts.ensure_installed, 'luau')
-      table.insert(opts.ensure_installed, 'luadoc')
+    config = function()
+      require('nvim-treesitter').install({ 'lua', 'luap', 'luau', 'luadoc' })
     end,
   },
 

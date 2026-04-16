@@ -1,8 +1,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'toml')
+    config = function()
+      require('nvim-treesitter').install({ 'toml' })
     end,
   },
 }

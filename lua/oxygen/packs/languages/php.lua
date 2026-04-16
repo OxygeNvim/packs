@@ -1,9 +1,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'php')
-      table.insert(opts.ensure_installed, 'phpdoc')
+    config = function()
+      require('nvim-treesitter').install({ 'php', 'phpdoc' })
     end,
   },
 

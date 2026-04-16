@@ -1,8 +1,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'vue')
+    config = function()
+      require('nvim-treesitter').install({ 'vue' })
     end,
   },
 

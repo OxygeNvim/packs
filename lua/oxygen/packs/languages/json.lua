@@ -1,11 +1,13 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'json')
-      table.insert(opts.ensure_installed, 'jsonc')
-      table.insert(opts.ensure_installed, 'json5')
-    end,
+    opts = {
+      parsers = {
+        json = {},
+        jsonc = {},
+        json5 = {},
+      },
+    },
   },
 
   {

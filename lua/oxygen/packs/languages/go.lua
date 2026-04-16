@@ -1,12 +1,14 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'go')
-      table.insert(opts.ensure_installed, 'gomod')
-      table.insert(opts.ensure_installed, 'gosum')
-      table.insert(opts.ensure_installed, 'gowork')
-    end,
+    opts = {
+      parsers = {
+        go = {},
+        gomod = {},
+        gosum = {},
+        gowork = {},
+      },
+    },
   },
 
   {

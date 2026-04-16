@@ -3,8 +3,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'rust')
+    config = function()
+      require('nvim-treesitter').install({ 'rust' })
     end,
   },
 

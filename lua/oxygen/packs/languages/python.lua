@@ -3,8 +3,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'python')
+    config = function()
+      require('nvim-treesitter').install({ 'python' })
     end,
   },
 

@@ -1,9 +1,8 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'c')
-      table.insert(opts.ensure_installed, 'cpp')
+    config = function()
+      require('nvim-treesitter').install({ 'c', 'cpp' })
     end,
   },
 

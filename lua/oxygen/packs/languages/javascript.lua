@@ -5,12 +5,14 @@ local lspconfig_util = require('lspconfig.util')
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      table.insert(opts.ensure_installed, 'javascript')
-      table.insert(opts.ensure_installed, 'typescript')
-      table.insert(opts.ensure_installed, 'jsdoc')
-      table.insert(opts.ensure_installed, 'tsx')
-    end,
+    opts = {
+      parsers = {
+        javascript = {},
+        typescript = {},
+        jsdoc = {},
+        tsx = {},
+      },
+    },
   },
 
   {
