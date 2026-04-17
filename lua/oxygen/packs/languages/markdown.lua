@@ -14,8 +14,8 @@ return {
     main = 'markview',
     ft = { 'markdown' },
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
+      { 'nvim-treesitter/nvim-treesitter' },
+      { 'nvim-tree/nvim-web-devicons' },
     },
     opts = {
       html = {
@@ -32,9 +32,10 @@ return {
 
   {
     'jmbuhr/otter.nvim',
+    ft = { 'markdown' },
     main = 'otter',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      { 'nvim-treesitter/nvim-treesitter' },
     },
     opts = {},
   },

@@ -1,7 +1,5 @@
 -- TODO: add dap
 
-local lspconfig_util = require('lspconfig.util')
-
 return {
   {
     'nvim-treesitter/nvim-treesitter',
